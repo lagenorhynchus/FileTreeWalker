@@ -2,21 +2,23 @@ var fs = require("fs");
 var path = require("path");
 
 var FileTreeWalker = (function () {
-  return {
-    walkFileTree: function walkFileTree (f, proc) {
-      if (fs.statSync(f).isDirectory()) {
-        fs.readdir(f, function (err, files) {
-          if (err) {
-            throw err;
-          }
-          files.map(function (file) {
-            walkFileTree(path.join(f, file), proc);
-          });
+  var walkFileTree = function walkFileTree (f, proc) {
+    if (fs.statSync(f).isDirectory()) {
+      fs.readdir(f, function (err, files) {
+        if (err) {
+          throw err;
+        }
+        files.map(function (file) {
+          walkFileTree(path.join(f, file), proc);
         });
-      } else {
-        proc(f);
-      }
+      });
+    } else {
+      proc(f);
     }
+  };
+
+  return {
+    walkFileTree: walkFileTree
   };
 }());
 

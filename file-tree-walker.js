@@ -2,6 +2,8 @@ var fs = require("fs");
 var path = require("path");
 
 var FileTreeWalker = (function () {
+  "use strict";
+
   var walkFileTree = function walkFileTree (f, proc) {
     if (fs.statSync(f).isDirectory()) {
       fs.readdir(f, function (err, files) {

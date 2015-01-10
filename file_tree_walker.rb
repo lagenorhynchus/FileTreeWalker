@@ -13,5 +13,5 @@ module FileTreeWalker
 end
 
 if __FILE__ == $0
-  FileTreeWalker.walk_file_tree("C:/") {|f| puts File.expand_path(f)}
+  FileTreeWalker.walk_file_tree("C:/") { |f| puts File.expand_path(f) }
 end

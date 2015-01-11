@@ -1,8 +1,8 @@
-var fs = require("fs");
-var path = require("path");
-
-var FileTreeWalker = (function () {
+(function () {
   "use strict";
+
+  var fs = require("fs");
+  var path = require("path");
 
   var walkFileTree = function walkFileTree (f, proc) {
     if (fs.statSync(f).isDirectory()) {
@@ -19,11 +19,12 @@ var FileTreeWalker = (function () {
     }
   };
 
-  return {
+  var FileTreeWalker =  {
     walkFileTree: walkFileTree
   };
-}());
+  module.exports = FileTreeWalker;
 
-FileTreeWalker.walkFileTree("C:\\", function (f) {
-  console.log(path.resolve(f));
-});
+  FileTreeWalker.walkFileTree("C:\\", function (f) {
+    console.log(path.resolve(f));
+  });
+}.call(this));

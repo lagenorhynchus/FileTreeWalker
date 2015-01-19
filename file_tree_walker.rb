@@ -1,6 +1,8 @@
 require "find"
 
 module FileTreeWalker
+  module_function
+
   def walk_file_tree(f)
     Find.find(f) do |file|
       if FileTest.file?(file)
@@ -8,8 +10,6 @@ module FileTreeWalker
       end
     end
   end
-
-  module_function :walk_file_tree
 end
 
 if __FILE__ == $0

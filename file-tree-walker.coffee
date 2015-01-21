@@ -8,7 +8,6 @@ walkFileTree = (f, proc) ->
     fs.readdir(f, (err, files) ->
       if err
         throw err
-
       files.map((file) ->
         walkFileTree(path.join(f, file), proc)
       )

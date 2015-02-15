@@ -6,7 +6,7 @@ module FileTreeWalker
   def walk_file_tree(f)
     Find.find(f) do |file|
       if FileTest.file?(file)
-        yield(file)
+        yield file
       end
     end
   end

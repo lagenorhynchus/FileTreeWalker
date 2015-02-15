@@ -3,7 +3,9 @@ module FileTreeWalker : sig
 end = struct
   let rec walk_file_tree f proc =
     if Sys.is_directory f
-      then Array.iter (fun child -> walk_file_tree (Filename.concat f child) proc) (Sys.readdir f)
+      then
+        let files = Sys.readdir f in
+        Array.iter (fun child -> walk_file_tree (Filename.concat f child) proc) files
       else proc f
 end
 

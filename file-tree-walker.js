@@ -27,4 +27,4 @@
   FileTreeWalker.walkFileTree("C:\\", function (f) {
     console.log(path.resolve(f));
   });
-}.call(this));
+}).call(this);

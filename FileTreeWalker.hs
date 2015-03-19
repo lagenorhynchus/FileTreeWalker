@@ -2,6 +2,9 @@ module FileTreeWalker where
 
 import System.Directory (doesDirectoryExist, getDirectoryContents)
 import System.FilePath ((</>))
+import qualified Data.Text.Lazy.IO as T
+import qualified Data.Text.Lazy as T
+
 
 walkFileTree :: FilePath -> (FilePath -> IO ()) -> IO ()
 walkFileTree f proc = do
@@ -13,4 +16,4 @@ walkFileTree f proc = do
     else proc f
 
 main :: IO ()
-main = walkFileTree "C:\\" print
+main = walkFileTree "C:\\" $ T.putStrLn . T.pack

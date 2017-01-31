@@ -1,4 +1,4 @@
 FileTreeWalker
 ==============
 
-ファイルシステムのディレクトリ階層を再帰的に走査するプログラム。
+A walker program which walks a file system tree recursively.
